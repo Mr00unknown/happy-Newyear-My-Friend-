@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Year 2026 - Shoaib</title>
+    <title>New Year 2026 - Shoaib Special</title>
     <style>
         body, html {
             margin: 0;
@@ -11,103 +11,145 @@
             height: 100%;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #0b0e14;
         }
 
-        /* Gojo & Naruto Background */
-        .bg-anime {
+        /* Common Background for both states */
+        .bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Using a high-quality Gojo & Naruto mix style background */
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images7.alphacoders.com/132/1328405.jpeg'); 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images7.alphacoders.com/132/1328405.jpeg');
             background-size: cover;
             background-position: center;
             z-index: -1;
+            transition: filter 1s ease;
+        }
+
+        /* SECTION 1: ENTER PAGE */
+        #entry-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: opacity 0.8s ease;
+        }
+
+        .enter-btn {
+            padding: 15px 50px;
+            font-size: 2rem;
+            color: white;
+            background: linear-gradient(45deg, #87CEEB, #2c3e50);
+            border: 2px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(135, 206, 235, 0.7);
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .enter-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(135, 206, 235, 1);
+        }
+
+        /* SECTION 2: WISH PAGE (Hidden by default) */
+        #wish-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
         .glass-box {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 50px 30px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-            max-width: 90%;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* Classic Light Colors */
-        h1 {
-            font-size: 3rem;
-            color: #f8f9fa; /* Elegant Off-White */
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
+        h1 { font-size: 3rem; color: #ffd700; text-shadow: 0 0 10px #000; margin-bottom: 10px; }
+        .msg { font-size: 1.5rem; color: #f0f0f0; margin-top: 10px; }
+        .highlight { color: #87CEEB; font-weight: bold; }
 
-        .sis-message {
-            font-size: 1.4rem;
-            color: #e0e0e0; /* Soft Light Grey */
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .highlight {
-            color: #87CEEB; /* Light Blue Gojo Eye Color */
-            font-weight: bold;
-        }
-
-        /* Smooth Floating Animation */
-        .float {
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        @keyframes floating {
+        @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-anime"></div>
+    <div class="bg-container" id="bg"></div>
 
-    <div class="glass-box float">
-        <h1>Happy New Year <span style="color: #ffd700;">2026</span></h1>
-        <p class="sis-message">Ya Sirf Tumra Liya Hai <br> <span class="highlight">Mera SiS San ❤️</span></p>
+    <div id="entry-page">
+        <h1 style="color: white; margin-bottom: 30px;">Are You Ready?</h1>
+        <button class="enter-btn" onclick="startWishing()">Enter 🚀</button>
+    </div>
+
+    <div id="wish-page">
+        <div class="glass-box">
+            <h1>Happy New Year 2026</h1>
+            <p class="msg">Ya Sirf Tumra Liya Hai <br> <span class="highlight">Mera SiS San ❤️</span></p>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-        const duration = 5 * 1000;
-        const animationEnd = Date.now() + duration;
+        function startWishing() {
+            // Hide Entry Page
+            const entry = document.getElementById('entry-page');
+            const wish = document.getElementById('wish-page');
+            const bg = document.getElementById('bg');
 
-        (function frame() {
-            confetti({
-                particleCount: 2,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: ['#87CEEB', '#ffffff', '#ff4d4d']
-            });
-            confetti({
-                particleCount: 2,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: ['#87CEEB', '#ffffff', '#ff4d4d']
-            });
+            entry.style.opacity = '0';
+            setTimeout(() => {
+                entry.style.display = 'none';
+                wish.style.display = 'flex';
+                // Show Wish Page
+                setTimeout(() => {
+                    wish.style.opacity = '1';
+                    bg.style.filter = 'blur(4px)'; // Blur background for focus
+                    launchConfetti();
+                }, 100);
+            }, 800);
+        }
 
-            if (Date.now() < animationEnd) {
-                requestAnimationFrame(frame);
-            }
-        }());
+        function launchConfetti() {
+            var end = Date.now() + (5 * 1000);
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#87CEEB', '#ffd700', '#ffffff']
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#87CEEB', '#ffd700', '#ffffff']
+                });
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
     </script>
 </body>
 </html>
