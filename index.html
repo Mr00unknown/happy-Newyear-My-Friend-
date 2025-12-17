@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year 2026 - Shoaib</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Gojo & Naruto Background */
+        .bg-anime {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Using a high-quality Gojo & Naruto mix style background */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images7.alphacoders.com/132/1328405.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 50px 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+        }
+
+        /* Classic Light Colors */
+        h1 {
+            font-size: 3rem;
+            color: #f8f9fa; /* Elegant Off-White */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .sis-message {
+            font-size: 1.4rem;
+            color: #e0e0e0; /* Soft Light Grey */
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            color: #87CEEB; /* Light Blue Gojo Eye Color */
+            font-weight: bold;
+        }
+
+        /* Smooth Floating Animation */
+        .float {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-anime"></div>
+
+    <div class="glass-box float">
+        <h1>Happy New Year <span style="color: #ffd700;">2026</span></h1>
+        <p class="sis-message">Ya Sirf Tumra Liya Hai <br> <span class="highlight">Mera SiS San ❤️</span></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        const duration = 5 * 1000;
+        const animationEnd = Date.now() + duration;
+
+        (function frame() {
+            confetti({
+                particleCount: 2,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: ['#87CEEB', '#ffffff', '#ff4d4d']
+            });
+            confetti({
+                particleCount: 2,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: ['#87CEEB', '#ffffff', '#ff4d4d']
+            });
+
+            if (Date.now() < animationEnd) {
+                requestAnimationFrame(frame);
+            }
+        }());
+    </script>
+</body>
+</html>
